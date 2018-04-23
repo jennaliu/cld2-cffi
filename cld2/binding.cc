@@ -124,10 +124,9 @@ extern "C" {
         int percent3[3];
         double normalized_score3[3];
         int text_bytes_found;
-        int valid_prefix_bytes;
         CLD2::ResultChunkVector resultChunkVector;
 
-        CLD2::ExtDetectLanguageSummaryCheckUTF8(bytes, num_bytes,
+        CLD2::ExtDetectLanguageSummary(bytes, num_bytes,
                                                 is_plain_text != 0,
                                                 &cldHints,
                                                 flags,
@@ -136,15 +135,10 @@ extern "C" {
                                                 normalized_score3,
                                                 return_vectors != 0 ? &resultChunkVector : 0,
                                                 &text_bytes_found,
-                                                &is_reliable,
-                                                &valid_prefix_bytes);
+                                                &is_reliable);
 
         results->reliable = is_reliable;
         results->bytes_found = text_bytes_found;
-        results->valid_prefix_bytes = valid_prefix_bytes;
-
-        if (valid_prefix_bytes < num_bytes)
-            return 3;
 
         for(int idx=0; idx<3; idx++) {
             CLD2::Language lang = language3[idx];
