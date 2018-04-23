@@ -501,7 +501,7 @@ void SummaryBufferToVector(ScriptScanner* scanner, const char* text,
       reliability_delta_bad = false;
     }
 
-    if (reliability_delta_bad || reliability_score_bad) {
+    if (reliability_score_bad) {
       new_lang = UNKNOWN_LANGUAGE;
     }
     ItemToVector(scanner, vec, new_lang, mapped_offset, mapped_len);
