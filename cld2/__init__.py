@@ -123,7 +123,7 @@ import six
 
 
 _DEBUG = False
-_COMPILER_ARGS = ['-ggdb'] if _DEBUG else ['-O2']
+_COMPILER_ARGS = ['-ggdb'] if _DEBUG else ['-O2', '-std=c++98']
 
 # pylint: disable=invalid-name
 _full_ffi = FFI()
